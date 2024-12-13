@@ -1,0 +1,110 @@
+<!DOCTYPE html> 
+<html lang="id"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Aplikasi Penjualan</title> 
+<link rel="stylesheet" href="produk style.css"> 
+<script src="https://kit.fontawesome.com/2dee39eee3.js" crossorigin="anonymous"></script>
+</head> 
+
+<body>
+ <nav>
+  <header>
+     <div class="logo">
+      <img src="logo toko.jpeg" alt="Logo">
+        <h1>CODEMARKET</h1>
+ </div>
+</header>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html" class="nav-item">Beranda</a></li>
+    <li><a href="kontak.html" class="nav-item">Kontak</a></li>
+    <li><a href="login.html" class="nav-item">Login</a></li>
+    <li><a href="keranjang.html" class="nav-item"> <i class="fa-solid fa-cart-shopping"></i>
+ </a></li>
+</ul>
+</nav>
+
+<div class="container"> 
+<div class="product"> 
+  <img src="takoyaki.jpg" alt="Gambar Barang 1">
+  <h2>Takoyaki</h2> 
+  <p>Harga: Rp 10.000</p> 
+  <button class="btn add-to-cart" data-name="Takoyaki" data-price="10000">Tambah Keranjang</button>
+  <button onclick="buyProduct('Takoyaki', 10000)">Buy</button>
+</div> 
+        
+ <div class="product"> 
+    <img src="cimol.jpg" alt="Gambar Barang 2"> 
+    <h2>Cimol</h2> 
+    <p>Harga: Rp 7.000</p> 
+    <button class="btn add-to-cart" data-name="Cimol" data-price="7000">Tambah Keranjang</button>
+    <button onclick="buyProduct('Cimol', 7000)">Buy</button>
+  </div> 
+
+ <div class="product"> 
+     <img src="Ayam geprek.jpg" alt="Gambar Barang 3"> 
+     <h2>Ayam Geprek</h2> 
+     <p>Harga: 10.000</p> 
+     <button class="btn add-to-cart" data-name="Ayam Geprek" data-price="10000">Tambah Keranjang</button>
+     <button onclick="buyProduct('Ayam Geprek', 10000)">Buy</button> 
+</div>
+
+ <div class="product"> 
+     <img src="mochi.jpg" alt="Barang 4"> 
+     <h2>Mochi</h2> 
+     <p>Harga: Rp 5.000</p> 
+     <button class="btn add-to-cart" data-name="" data-price="5000">Tambah Keranjang</button>
+     <button onclick="buyProduct('Mochi', 5000)">Buy</button> 
+</div> 
+
+ <div class="product"> 
+    <img src="pop ice.jpg" alt="Gambar Barang 5"> 
+     <h2>Pop Ice</h2> 
+     <p>Harga: Rp 5.000</p> 
+     <button class="btn add-to-cart" data-name="Pop Ice" data-price="5000">Tambah Keranjang</button>
+     <button onclick="buyProduct('Pop Ice', 5000)">Buy</button> 
+        </div> 
+<div class="product"> 
+    <img src="ice cream.jpg" alt="Gambar Barang 6"> 
+    <h2>Ice Cream</h2> 
+    <p>Harga: Rp 5.000</p> 
+    <button class="btn add-to-cart" data-name="Ice Cream" data-price="5000">Tambah Keranjang</button>
+    <button onclick="buyProduct('Ice Cream', 5000)">Buy</button> 
+    </div> 
+  <script>
+        
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            
+ addToCartButtons.forEach(button => {
+ button.addEventListener('click', () => {
+ const productName = button.getAttribute('data-name');
+ const productPrice = button.getAttribute('data-price');
+            
+  const product = {
+  name: productName,
+   price: parseInt(productPrice)
+    };
+            
+   let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+   cart.push(product);
+            
+   localStorage.setItem('cart', JSON.stringify(cart));
+            
+    alert(`${productName} telah ditambahkan ke keranjang`);
+     });
+   });
+
+   function buyProduct(productName, productPrice) {
+    const message = `Halo Admin, saya ingin membeli ${productName} dengan harga Rp ${productPrice}.`;
+    const whatsappNumber = '+6283876459470'; 
+    const whatsappLink = `https://wa.me/${6283876459470}?text=${encodeURIComponent(message)}`;
+    
+    window.open(whatsappLink, '_blank');
+}
+   
+ </script> 
+</body> 
+
+</html>
